@@ -1,0 +1,349 @@
+<div style="margin-top:61px;">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="row no-gutters">
+
+          <div class="col-md-6 rRow" style="overflow:hidden;">
+
+            <div class="row">
+              <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                    aria-controls="v-pills-home" aria-selected="true"> <img src="assets/{{item.images}}"
+                      class="d-block w-100" alt="..." style="height: 50px; width:40%; margin:1px;padding:1px;"></a>
+                  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                    aria-controls="v-pills-profile" aria-selected="false">
+                    <img src="assets/a.jpg" class="d-block w-100" alt="..."
+                      style="height: 50px; width:40%; margin:1px;padding:1px;">
+                  </a>
+                  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                    aria-controls="v-pills-messages" aria-selected="false">
+                    <img src="assets/{{item.images}}" class="d-block w-100" alt="..."
+                      style="height: 50px; width:40%; margin:1px;padding:1px;">
+                  </a>
+                  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                    aria-controls="v-pills-settings" aria-selected="false">
+                    <img src="assets/b.jpg" class="d-block w-100" alt="..."
+                      style="height: 50px; width:40%; margin:1px;padding:1px;">
+                  </a>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+
+                    <img src="assets/{{item.images}}" class="d-block w-100" alt="..."
+                      style="height: 350px; width:70%!important; margin-left:15%;padding:5px;">
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <img src="assets/a.jpg" class="d-block w-100" alt="..."
+                      style="height: 350px; width:70%!important; margin-left:15%;padding:5px;">
+
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                    aria-labelledby="v-pills-messages-tab">
+                    <img src="assets/{{item.images}}" class="d-block w-100" alt="..."
+                    style="height: 350px; width:70%!important; margin-left:15%;padding:5px;">
+
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                    aria-labelledby="v-pills-settings-tab">
+                    <img src="assets/b.jpg" class="d-block w-100" alt="..."
+                    style="height: 350px; width:70%!important; margin-left:15%;padding:5px;">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- <div> <img src="assets/{{item.images}}" class="d-block w-100" alt="..."
+                  style="height: 350px; width:70%; margin:5px;padding:5px;">
+              </div> -->
+            <div style="margin:10px"> <a [routerLink]="['/details', item._id]" (click)="addToCart(item)"
+                class="btn btn-danger">Add To Cart</a>
+              <a [routerLink]="['/details', item._id]" (click)="placeOrder(item)" class="btn btn-success"
+                style="margin-left: 10px;">Buy Now</a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}} ({{item.color}})</h5>
+              <small><b>Sold by </b> <i style="color:rgb(82, 12, 12)">{{item.sellerEmail}}</i></small><br/>
+              <div class="col-sm-9">
+                <h5 style="color:green">{{item.price | currency:'INR':'symbol-narrow':'4.2-2'}}</h5>
+                <p class="mb-1" *ngIf="item.category=='electronics'">{{item.ram}} | {{item.rom}} Memory</p>
+                <p class="mb-1" *ngIf="item.category=='electronics'">{{item.screenLength}} {{item.displayType}} Display</p>
+                <p class="mb-1" *ngIf="item.category=='electronics'">{{item.camera}} camera</p>
+                <p class="mb-1" *ngIf="item.category=='electronics'">{{item.battery}} Battery</p>
+                <p class="mb-1"  *ngIf="item.category=='electronics'">{{item.processor}} Processors</p>
+                <p class="mb-1"  *ngIf="item.category=='fashion'"> Size : {{item.size}}</p>
+                <small *ngIf="item.category=='fashion'">{{item.warranty}} manufacturer warranty for this product  is and 1 months</small>
+                <small *ngIf="item.category=='electronics'">{{item.warranty}} manufacturer warranty for this product  is and 6 months</small>
+              
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="rRow">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+              aria-controls="nav-home" aria-selected="true">Overview</a>
+            <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+              aria-controls="nav-profile" aria-selected="false">Manufacturing Info</a>
+            <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+              aria-controls="nav-contact" aria-selected="false">Return Policy</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <h5 class="card-title">{{item.name}} ({{item.color}}) </h5>
+
+            <div class="col-sm-9">
+              <p class="mb-1">{{item.price | currency:'INR':'symbol-narrow':'4.2-2'}}</p>
+              <p class="mb-1" *ngIf="item.category=='electronics'">{{item.ram}} | {{item.rom}} Memory</p>
+              <p class="mb-1" *ngIf="item.category=='electronics'">{{item.screenLength}} {{item.displayType}} Display</p>
+              <p class="mb-1" *ngIf="item.category=='electronics'">{{item.camera}} camera</p>
+              <p class="mb-1" *ngIf="item.category=='electronics'">{{item.battery}} Battery</p>
+              <p class="mb-1" *ngIf="item.category=='electronics'">{{item.processor}} Processors</p>
+              <p class="mb-1" *ngIf="item.category=='fashion' && item.size">Size :{{item.size}}</p>
+              <small *ngIf="item.category=='electronics'">{{item.warranty}} manufacturer warranty for device and 6 months manufacturer warranty for in-box
+                accessories</small>
+                <small *ngIf="item.category=='fashion'">{{item.warranty}} manufacturer warranty for this product is  1 months
+                  </small>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <small>{{item.warranty}} manufacturer warranty for device and 6 months manufacturer warranty for in-box
+              accessories</small>
+          </div>
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            There is no Return Policy on this product..
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="rRow">
+        <div class="vky">
+          <h5>Delivery by 17th Sep</h5>
+          <hr />
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Pincode</label>
+              <input type="email" class="form-control" name="zip" [(ngModel)]="user1.zip" (keyup)="updateUser()" id="exampleInputEmail1" 
+                aria-describedby="emailHelp">
+              <!-- <small id="emailHelp" *ngIf="error" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-md-4">Hii</div>
+            <div class="col-md-4">Hii</div>
+            <div class="col-md-4">Hii</div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="rRow">
+        <div class="vky">
+          Offers
+        </div>
+        <hr />
+        <div class="vky">
+          Exchange Offers
+        </div>
+        <hr />
+        <div class="vky">
+          Warranty
+        </div>
+
+
+      </div>
+      <div class="rRow">
+        <div class="vky">
+          <p>Sold By</p>
+          {{user.name}} , {{user.city}}
+        </div>
+        <hr />
+        <div class="vky">
+          <p>Also sold by </p>
+          4 other selles
+        </div>
+      </div>
+      <div class="rRow">
+        <span class="heading">User Rating</span>
+        <span>
+        <fieldset class="rating">
+          <input type="radio" [name]="inputName"  [checked]="avgRating==5" />
+          <label title="Rocks!" >5 stars</label>
+        
+          <input type="radio"  [name]="inputName" [checked]="avgRating==4" />
+          <label title="Pretty good" >4 stars</label>
+        
+          <input type="radio" [name]="inputName"  [checked]="avgRating==3" />
+          <label title="Meh" >3 stars</label>
+        
+          <input type="radio"  [name]="inputName" [checked]="avgRating==2" />
+          <label title="Kinda bad" >2 stars</label>
+        
+          <input type="radio"  [name]="inputName"  [checked]="avgRating==1" />
+          <label title="Sucks big time">1 star</label>
+        </fieldset>
+      </span>
+        
+        <!-- <span *ngIf="avgRating" class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span> -->
+
+        <!-- <app-rating [rating]='avgRating' [itemId]='review.id' [(ngModel)]="avgRating" ngDefaultControl value="{{rating}}" name="ratingss" (ratingClick)='ratingComponentClick($event)'></app-rating> -->
+              
+        <p>{{rating}} average based on {{totalreviews}} reviews.</p>
+
+        <hr style="border:3px solid #f1f1f1">
+
+        <div class="row">
+          <div class="side">
+            <div>5 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress-bar bar-5" role="progressbar" [ngStyle]="{'width': fiveWidth + '%'}"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>{{fiveStar}}</div>
+          </div>
+          <div class="side">
+            <div>4 star</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div class="progress">
+                <div class="progress-bar bar-4" role="progressbar" [ngStyle]="{'width': fourWidth + '%'}"
+                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>{{fourStar}}</div>
+          </div>
+          <div class="side">
+            <div>3 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress-bar bar-3" role="progressbar" [ngStyle]="{'width': threeWidth + '%'}"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>{{threeStar}}</div>
+          </div>
+          <div class="side">
+            <div>2 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress-bar bar-2" role="progressbar" [ngStyle]="{'width': twoWidth + '%'}"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>{{twoStar}}</div>
+          </div>
+          <div class="side">
+            <div>1 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress-bar bar-1" role="progressbar" [ngStyle]="{'width': oneWidth + '%'}"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>{{oneStar}}</div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="rRow">
+        <!-- <span class="heading">User Rating</span> -->
+        <p class="heading">All Reviews</p>
+        <hr />
+
+        <div class="row vky">
+          <!-- <h5>All Reviews </h5>
+          <hr /> -->
+          <div *ngFor="let data of reviews | paginate: { itemsPerPage: 12, currentPage: pages }" class="list-group"
+            style="margin-bottom: 10px;">
+            <a class="list-group-item list-group-item-action">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 100px;">
+                  </div>
+                  <div class="col-sm-9">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{data.name}} <small
+                          style="background-color: green; padding:3px; color:white;font-weight: bold;">{{data.ratings}}</small>
+                      </h5>
+
+                    </div>
+                    <p class="mb-1">{{data.comments}}</p>
+
+                    <small>{{data.comments}} </small>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- <div class="container">
+  <h5>All Reviews </h5>
+
+  <hr />
+  <div class="row">
+    <div *ngFor="let data of reviews | paginate: { itemsPerPage: 12, currentPage: p }" class="list-group"
+      style="margin-bottom: 10px;">
+      <a class="list-group-item list-group-item-action">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 100px;">
+            </div>
+            <div class="col-sm-9">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{data.Name}}
+                </h5>
+
+              </div>
+              <p class="mb-1">{{data.comments}}</p>
+
+              <small>{{data.comments}} </small>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div> -->

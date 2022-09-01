@@ -1,0 +1,100 @@
+<app-seller-home></app-seller-home>
+<!-- 
+
+<div class="container">
+<div *ngFor="let data of orderDetailsArr"
+class="list-group" style="margin-bottom: 10px;">
+<a class="list-group-item list-group-item-action">
+
+    <div class="row">
+      <div class="col-sm-3 " >
+        <img src="assets/a.jpg" class="d-block w-100 circle-link" alt="..." style="height: 200px; width: 200px !important; border-radius: 100%;">
+      </div>
+      <div class="col-sm-6">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><a class="productName" [routerLink]="['/productDesc', data.productId]">{{data.productName}} ({{data.ram}} | {{data.rom}} Memory)</a></h5>
+         
+        </div>
+        <p class="mb-1" style="color:red"> Quantity = <b>{{data.quantity}}</b></p>
+        <p class="mb-1" style="color:green">₹{{data.price}}</p>
+        <p class="mb-1">Total = ₹{{data.totalPrice}}</p>
+        <p class="mb-1" ><b>{{data.name}} </b> </p>
+        <p class="mb-1">{{data.mobile}} </p>
+        <p class="mb-1">{{data.address}}</p>
+    
+      </div>
+      <div class="col-sm-3">
+        <button class="btn btn-success" style="margin:10px" (click)="updateOrderStatus(data,'Accepted')">Accept</button>
+        <button class="btn btn-danger" (click)="updateOrderStatus(data,'Rejected')">Reject</button>
+       </div>
+    </div>
+ 
+</a>
+</div>
+</div>
+
+
+
+ -->
+
+
+
+
+  <div class="container">
+   
+      <!-- <div *ngIf="items2.length<=0">No Result Found....</div> -->
+      <!-- <div style="text-align:center"> <h4>Grand Total Orders Value = {{grandTotal}}</h4></div> -->
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+      <div *ngFor="let data of orderDetailsArr | paginate: { itemsPerPage: 10, currentPage: pages }" class="list-group" style="margin-bottom: 10px;">
+        <a  class="list-group-item list-group-item-action">
+          <!-- <div class="container"> -->
+            <div class="row">
+              <div class="col-md-1">
+                <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 75px;">
+           
+              </div>
+              <div class="col-md-3">
+                <div class="d-flex w-100 justify-content-between">
+                  <h6 class="mb-1"><a [routerLink]="['/productDesc', data.productId]" class="rishuLink2">{{data.productName}} ({{data.color}}) </a></h6>
+              
+                </div>
+                <small class="mb-1">{{data.ram}} | {{data.rom}} Memory</small><br/>
+               
+              </div>
+              <div class="col-md-2">
+                <small style="color:green">₹{{data.price}}</small><br/>
+                <!-- <p class="mb-1">₹{{data.price}}</p> -->
+                <small style="color:red">Quantity = {{data.quantity}}</small>
+                <!-- <p class="mb-1">{{data.quantity}}</p> -->
+                <p class="mb-1">Total = ₹{{data.totalPrice}}</p>
+              </div>
+              <div class="col-md-3">
+                <b>{{data.name}}</b><br/>
+                <!-- <p class="mb-1">₹{{data.price}}</p> -->
+                <p class="mb-1">{{data.mobile}}</p>
+                <!-- <p class="mb-1">{{data.quantity}}</p> -->
+                <small>{{data.address}}</small>
+              </div>
+              <div class="col-md-3">
+                <div>
+                  <span *ngIf="data.orderStatus=='Accepted'" class="orderStatus accepted"></span>
+                  <span *ngIf="data.orderStatus=='Pending'" class="orderStatus pending"></span>
+                  <span *ngIf="data.orderStatus=='Rejected'" class="orderStatus canceled"></span>
+                  <span *ngIf="data.orderStatus=='Delevired'" class="orderStatus delevired"></span>
+                  
+                  {{data.orderStatus}}</div>
+                  <small *ngIf="data.orderStatus=='Pending'">Your order is pending</small>
+                  <small *ngIf="data.orderStatus=='Accepted'">Your order has been been Accepted</small>
+                  <small *ngIf="data.orderStatus=='Rejected'">Your order has been been Canceled</small>
+                 <small *ngIf="data.orderStatus=='Delevired'">Your order has been been deliverd</small>
+                 <!-- <button class="btn btn-success" style="margin:10px" (click)="updateOrderStatus(data,'Accepted')">Accept</button> -->
+        <button class="btn btn-danger" (click)="updateOrderStatus(data,'Rejected')">Reject</button>
+         
+              </div>
+            </div>
+          <!-- </div> -->
+        </a>
+      </div>
+     
+    
+<!-- <app-seller-profile></app-seller-profile> -->

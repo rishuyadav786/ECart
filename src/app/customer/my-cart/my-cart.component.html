@@ -1,0 +1,228 @@
+<!-- <div style="margin-top:61px;">
+
+
+<div class="container">
+    
+  <div style="margin-top:61px;">
+   
+    <div style="text-align:center"> <h4>Grand Total Cart Value = {{grandTotal}}</h4></div>
+    <div *ngFor="let data of items | paginate: { itemsPerPage: 12, currentPage: p }" class="list-group" style="margin-bottom: 10px;">
+      <a  class="list-group-item list-group-item-action">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 160px;">
+            </div>
+            <div class="col-sm-5">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><a [routerLink]="['/details', data.id]">{{data.name}} ({{data.color}})</a></h5>
+              
+              </div>
+              <p class="mb-1">{{data.ram}} | {{data.rom}} Memory</p>
+              <p class="mb-1">{{data.price}}</p>
+              <div class="mb-1">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Select Quantity</label>
+                    <select [(ngModel)]="data.quantity" name="quantity" class="form-control" id="exampleFormControlSelect2">
+                      <option value="1" selected>1</option>
+                      <option value="2" >2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+              </div>
+              
+                    <input type="hidden" [(ngModel)]="data.buyerEmail" value="rekhaShaw">
+            </div>
+            <div class="col-sm-4">
+                <div><button class="btn btn-success"  (click)="placeOrder(data)">Place order</button></div>
+                <div style="margin-top:10px;"><button class="btn btn-danger" (click)="removeItem(data.id)">Remove Item</button></div>
+                
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div> -->
+
+
+<div style="margin-top:61px;">
+  
+
+  <div class="container">
+      
+    <div style="margin-top:61px;">
+      <!-- <div *ngIf="items2.length<=0">No Result Found....</div> -->
+      <div style="text-align:center"> <h4>Grand Total Orders Value = {{grandTotal}}</h4></div>
+      <div *ngFor="let data of items | paginate: { itemsPerPage: 12, currentPage: pages }" class="list-group" style="margin-bottom: 10px;">
+        <a  class="list-group-item list-group-item-action">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-1">
+                <img src="assets/{{data.images}}" class="d-block w-100 cartImages" alt="..." style="">
+           
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><a [routerLink]="['/details', data._id]" class="rishuLink2">{{data.name}} ({{data.color}}) </a></h5>
+              
+                </div>
+                <p class="mb-1" *ngIf="data.category=='electronics'">{{data.ram}} | {{data.rom}} Memory</p>
+                <p class="mb-1" *ngIf="data.category=='fashion'">Size : {{data.size}}</p>
+             
+              </div>
+              <div class="col-md-3">
+                <small>₹{{data.price}}</small><br/>
+                <!-- <p class="mb-1">₹{{data.price}}</p> -->
+                <div class="form-group1">
+                  <small for="exampleFormControlSelect2">Select Quantity   </small> 
+                  <small>
+                  <select [(ngModel)]="data.quantity" name="quantity" class="form-control1" id="exampleFormControlSelect2">
+                    <option value="1" selected="selected">1</option>
+                    <option value="2" >2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                 </small>
+                </div>
+                <!-- <small>Quantity = {{data.quantity}}</small> -->
+                <!-- <p class="mb-1">{{data.quantity}}</p> -->
+                <p class="mb-1">Total = ₹{{data.price*data.quantity}}</p>
+              </div>
+              <div class="col-md-4">
+                <div>
+                  <span *ngIf="data.orderStatus=='Accepted'" class="orderStatus accepted"></span>
+                  <span *ngIf="data.orderStatus=='Pending'" class="orderStatus pending"></span>
+                  <span *ngIf="data.orderStatus=='Rejected'" class="orderStatus canceled"></span>
+                  <span *ngIf="data.orderStatus=='Delevired'" class="orderStatus delevired"></span>
+                  
+                  {{data.orderStatus}}</div>
+                  <small *ngIf="data.orderStatus=='Pending'">Your order is pending</small>
+                  <small *ngIf="data.orderStatus=='Accepted'">Your order has been been Accepted</small>
+                  <small *ngIf="data.orderStatus=='Rejected'">Your order has been been Canceled</small>
+                 <small *ngIf="data.orderStatus=='Delevired'">Your order has been been deliverd</small>
+                 <span><button  class="btn btn-success" [disabled]="!data.quantity"  data-toggle="modal"
+                  data-target="#placeOrderModel" (click)="placeOrder1(data)">Place order</button></span>
+                 <span style="margin:10px!important;"><button class="btn btn-danger" (click)="removeItem(data._id)">Remove Item</button></span>
+                 <!-- [disabled]="!data.quantity" -->
+              </div>
+            </div>
+          </div>
+        </a>
+        
+<!-- --------------------start----------------- -->
+
+
+  
+
+<div class="modal fade" id="placeOrderModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5  class="modal-title" id="exampleModalLabel">Place Order</h5>
+     
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+    
+    
+      <form  #userForm="ngForm">
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="user.name" name="name" placeholder="Name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Address 1</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="user.address" name="address" placeholder="House no. , street">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Address 2</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="user.address2" name="address2" placeholder="Locality , Landmark">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">City</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="user.city" name="city" placeholder="City" >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">State</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="user.state" name="state" placeholder="State" >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Zip</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="user.zip" name="zip" placeholder="ZIP" >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Mobile</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="user.mobile" name="mobile" placeholder="Mobile" >
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Payment Type</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" [(ngModel)]="order.paymentType" name="userType" value="online" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  Online
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" [(ngModel)]="order.paymentType" name="userType"  value="cash">
+                <label class="form-check-label" for="gridRadios2">
+                  Cash On Delivery 
+                </label>
+              </div>
+             
+            </div>
+          </div>
+        </fieldset>
+     
+        <div class="form-group row">
+          
+          <div class="col-sm-10">
+            <button  type="submit"class="btn btn-primary" data-dismiss="modal" (click)="placeOrder(data)">Confirm Order</button>
+          </div>
+        </div>
+      </form>
+    
+     
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- -----------------------end--------------------------- -->
+
+      </div>
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
+  </div>
+
+
+
+

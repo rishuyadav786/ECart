@@ -1,0 +1,145 @@
+<div class="container">
+
+
+  <div class="row">
+    <div class="col-3">
+      <div style="border:1px solid grey; padding:5px;margin-bottom: 10px;">
+        <span style="float: left; margin-right: 10px;"><img src="assets/{{user.images}}" alt=""
+            style="width:50px;height:50px; border-radius: 50%;"></span>
+        <span>
+          <div>Hello</div>
+          <div>{{user.name}}</div>
+          <!-- <div>{{user.images}}</div> -->
+        </span>
+        <span>
+
+        </span>
+      </div>
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-personel-tab" data-toggle="pill" href="#v-pills-personel" role="tab"
+          aria-controls="v-pills-personel" aria-selected="true">Personel Information</a>
+        <a class="nav-link" id="v-pills-address-tab" data-toggle="pill" href="#v-pills-address" role="tab"
+          aria-controls="v-pills-address" aria-selected="false">address</a>
+        <a class="nav-link" id="v-pills-payments-tab" data-toggle="pill" href="#v-pills-payments" role="tab"
+          aria-controls="v-pills-payments" aria-selected="false">Payments</a>
+        <a class="nav-link" id="v-pills-myOrders-tab" data-toggle="pill" href="#v-pills-myOrders" role="tab"
+          aria-controls="v-pills-myOrders" aria-selected="false">My Orders</a>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-personel" role="tabpanel"
+          aria-labelledby="v-pills-personel-tab">
+
+
+          <form #user1Form="ngForm" class="userFormUpdate" (ngSubmit)="updateUser(user1Form.value)">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">First Name</label>
+                <input type="email" [(ngModel)]="user.name" class="form-control" name="name" id="inputEmail4"
+                  value="{{user.name}}">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Last Name</label>
+                <input type="text" class="form-control" id="inputPassword4" name="lname" placeholder="baba">
+              </div>
+            </div>
+            <fieldset class="form-group">
+              <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" [(ngModel)]="user.gender" name="gender"
+                      name="gridRadios" id="gridRadios1" value="Male" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" [(ngModel)]="user.gender" name="gender"
+                      id="gridRadios2" value="Female">
+                    <label class="form-check-label" for="gridRadios2">
+                      Female
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+            </fieldset>
+            <div class="form-group">
+              <label for="inputEmail45">Email</label>
+              <input type="email" class="form-control" [(ngModel)]="user.email" name="email" id="inputEmail45"
+                value="{{user.email}}">
+            </div>
+            <div class="form-group">
+              <label for="inputMobile1">Mobile</label>
+              <input type="text" class="form-control" id="inputMobile1" [(ngModel)]="user.mobile" name="mobile"
+                value="{{user.mobile}}">
+            </div>
+
+            <div class="form-group">
+              <label for="ImputImage">Upload Profile Pic</label>
+              <input type="file" class="form-control" id="ImputImage" name="images" [(ngModel)]="user.images" multiple
+                (change)="selectImage($event)" id="exampleFormControlFile1" />
+            </div>
+            <!-- <button (click)="onSubmit()" class="btn btn-primary">Upload Photo</button> -->
+
+
+            <button type="submit" (click)="onSubmit()" class="btn btn-primary">Update</button>
+          </form>
+
+        </div>
+        <div class="tab-pane fade" id="v-pills-address" role="tabpanel" aria-labelledby="v-pills-address-tab">
+
+
+
+          <form #user2Form="ngForm" class="userFormUpdate" (ngSubmit)="updateUser(user2Form.value)">
+
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="inputAddress" name="address" [(ngModel)]="user.address"
+                value="{{user.address}}">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input type="text" class="form-control" id="inputAddress2" name="address2" [(ngModel)]="user.address2"
+                value="{{user.address2}}">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" name="city" [(ngModel)]="user.city"
+                  value="{{user.city}}">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control" name="state" [(ngModel)]="user.state"
+                  value="{{user.state}}">
+                  <option selected>Choose...</option>
+                  <option *ngFor="let data of allStates" value="{{data.value}}">{{data.label}}</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip" name="zip" [(ngModel)]="user.zip"
+                  value="{{user.zip}}">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+
+
+
+        </div>
+        <div class="tab-pane fade" id="v-pills-payments" role="tabpanel" aria-labelledby="v-pills-payments-tab">
+          .Payments..</div>
+        <div class="tab-pane fade" id="v-pills-myOrders" role="tabpanel" aria-labelledby="v-pills-myOrders-tab">..My
+          orders.</div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

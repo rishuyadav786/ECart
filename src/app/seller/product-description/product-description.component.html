@@ -1,0 +1,33 @@
+<app-seller-home></app-seller-home>
+
+
+<div style="margin-top:61px;">
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4" style="overflow:hidden;">
+          <div> <img src="assets/{{item.images}}" class="d-block w-100" alt="..." style="height: 350px;margin:10px;padding:5px;">
+          </div>
+          <div> <a [routerLink]="['/productDesc', item._id]"  class="btn btn-danger">Edit Product</a>
+            <a  (click)="deleteProduct(item)" class="btn btn-success">Delete Product</a>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{item.name}} ({{item.color}}) </h5>
+  
+            <div class="col-sm-9">
+              <p class="mb-1">{{item.ram}} | {{item.rom}} Memory</p>
+              <p class="mb-1">{{item.screenLength}} {{item.displayType}} Display</p>
+              <p class="mb-1">{{item.camera}} camera</p>
+              <p class="mb-1">{{item.battery}} Battery</p>
+              <p class="mb-1">{{item.processor}} Processors</p>
+              <small>{{item.warranty}} manufacturer warranty for device and 6 months manufacturer warranty for in-box
+                accessories</small>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,379 @@
+<app-seller-home></app-seller-home>
+<!-- <app-seller-profile></app-seller-profile> -->
+<div class="container">
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="electronics-tab" data-toggle="tab" href="#electronics" role="tab"
+        aria-controls="electronics" aria-selected="true">Electronics</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="foods-tab" data-toggle="tab" href="#foods" role="tab" aria-controls="foods"
+        aria-selected="false">Foods</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="fashion-tab" data-toggle="tab" href="#fashion" role="tab" aria-controls="fashion"
+        aria-selected="false">Fashion</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="homemade-tab" data-toggle="tab" href="#homemade" role="tab" aria-controls="homemade"
+        aria-selected="false">Home Made</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="electronics" role="tabpanel" aria-labelledby="electronics-tab">
+
+      <div class="container">
+        <form #addItemsForm="ngForm" (ngSubmit)="addItems(addItemsForm.value)">
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="item.name" id="exampleFormControlInput1"
+              placeholder="Product name">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Product Price</label>
+            <input class="form-control" name="price" [(ngModel)]="item.price" id="exampleFormControlInput1"
+              placeholder="Product Price">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Brand</label>
+            <input type="text" class="form-control" name="brand" [(ngModel)]="item.brand" id="exampleFormControlInput1"
+              placeholder="Product Brand">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Ram</label>
+            <input type="text" class="form-control" name="ram" [(ngModel)]="item.ram" id="exampleFormControlInput1"
+              placeholder="Product Ram">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Rom</label>
+            <input type="text" class="form-control" name="rom" [(ngModel)]="item.rom" id="exampleFormControlInput1"
+              placeholder="Product Rom">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Camera</label>
+            <input type="text" class="form-control" name="camera" [(ngModel)]="item.camera"
+              id="exampleFormControlInput1" placeholder="Product Camera">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Battery</label>
+            <input type="text" class="form-control" name="battery" [(ngModel)]="item.battery"
+              id="exampleFormControlInput1" placeholder="Product Battery">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Screen Length</label>
+            <input type="text" class="form-control" name="screenLength" [(ngModel)]="item.screenLength"
+              id="exampleFormControlInput1" placeholder="Product Screen Length">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Color</label>
+            <input type="text" class="form-control" name="color" [(ngModel)]="item.color" id="exampleFormControlInput1"
+              placeholder="Product Color">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Product Category</label>
+            <select class="form-control" [(ngModel)]="item.category" name="category" id="exampleFormControlSelect1">
+              <option value="foods">Foods</option>
+              <option value="electronics">Electronics</option>
+              <option value="homemade">Home Made</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Product Sub Category</label>
+            <select [(ngModel)]="item.subCategory" name="subCategory" class="form-control"
+              id="exampleFormControlSelect2">
+              <option *ngFor="let data of electronics" value="{{data.value}}">{{data.label}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Product Quantity</label>
+            <input type="text" class="form-control" name="year" [(ngModel)]="item.year" id="exampleFormControlInput1"
+              placeholder="Product Quantity">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Add Product Image</label>
+            <!-- <input type="file" class="form-control-file" name="filet" id="exampleFormControlFile1"> -->
+            <div>
+              <input type="file" name="images" [(ngModel)]="item.images" multiple (change)="selectImage($event)"
+                id="exampleFormControlFile1" />
+            </div>
+            <br>
+            <!-- <div>
+            <button type="submit" (click)="onMultipleSubmit()">Multiple Upload</button>
+          </div> -->
+          </div>
+          <!-- <input type="hidden" class="form-control" name="category" [(ngModel)]="item.category" id="exampleFormControlInput178676"
+        value="electronics"> -->
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="foods" role="tabpanel" aria-labelledby="foods-tab">
+      <div class="container">
+
+        <form #addItemsForm="ngForm" (ngSubmit)="addItems(addItemsForm.value)">
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="item.name" id="exampleFormControlInput1"
+              placeholder="Product name">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Product Price</label>
+            <input class="form-control" name="price" [(ngModel)]="item.price" id="exampleFormControlInput1"
+              placeholder="Product Price">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Brand</label>
+            <input type="text" class="form-control" name="brand" [(ngModel)]="item.brand" id="exampleFormControlInput1"
+              placeholder="Product Brand">
+          </div>
+
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Color</label>
+            <input type="text" class="form-control" name="color" [(ngModel)]="item.color" id="exampleFormControlInput1"
+              placeholder="Product Color">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Product Category</label>
+            <select class="form-control" [(ngModel)]="item.category" name="category" id="exampleFormControlSelect1">
+              <option value="foods">Foods</option>
+              <option value="electronics">Electronics</option>
+              <option value="homemade">Home Made</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Product Sub Category</label>
+            <select [(ngModel)]="item.subCategory" name="subCategory" class="form-control"
+              id="exampleFormControlSelect2">
+              <option *ngFor="let data of foods" value="{{data.value}}">{{data.label}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Product Quantity</label>
+            <input type="text" class="form-control" name="quantity" [(ngModel)]="item.quantity"
+              id="exampleFormControlInput1" placeholder="Product Quantity">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Add Product Image</label>
+            <!-- <input type="file" class="form-control-file" name="filet" id="exampleFormControlFile1"> -->
+            <div>
+              <input type="file" name="images" [(ngModel)]="item.images" multiple (change)="selectImage($event)"
+                id="exampleFormControlFile1" />
+            </div>
+            <br>
+            <!-- <div>
+            <button type="submit" (click)="onMultipleSubmit()">Multiple Upload</button>
+          </div> -->
+          </div>
+          <!-- <input type="hidden" class="form-control" name="category" [(ngModel)]="item.category" id="exampleFormControlInput178676"
+        value="foods"> -->
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+      <div class="container">
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+        <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length">
+          Upload
+        </button>
+      </div>
+      <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+      <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()">
+        Upload
+      </button>
+    </div>
+    <div class="tab-pane fade" id="fashion" role="tabpanel" aria-labelledby="fashion-tab">
+      <div class="container">
+
+        <form #addItemsForm="ngForm" (ngSubmit)="addItems(addItemsForm.value)">
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="item.name" id="exampleFormControlInput1"
+              placeholder="Product name">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Product Price</label>
+            <input class="form-control" name="price" [(ngModel)]="item.price" id="exampleFormControlInput1"
+              placeholder="Product Price">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Brand</label>
+            <input type="text" class="form-control" name="brand" [(ngModel)]="item.brand" id="exampleFormControlInput1"
+              placeholder="Product Brand">
+          </div>
+
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Color</label>
+            <input type="text" class="form-control" name="color" [(ngModel)]="item.color" id="exampleFormControlInput1"
+              placeholder="Product Color">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1996">Size</label>
+            <input type="text" class="form-control" name="size" [(ngModel)]="item.size" id="exampleFormControlInput1996"
+              placeholder="Product Size">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Product Category</label>
+            <select class="form-control" [(ngModel)]="item.category" name="category" id="exampleFormControlSelect1">
+              <option value="foods">Foods</option>
+              <option value="electronics">Electronics</option>
+              <option value="fashion">Fashion</option>
+              <option value="homemade">Home Made</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Product Sub Category</label>
+            <select [(ngModel)]="item.subCategory" name="subCategory" class="form-control"
+              id="exampleFormControlSelect2">
+              <option *ngFor="let data of fashion" value="{{data.value}}">{{data.label}}</option>
+              <!-- <option value="women">Samsung</option>
+              <option value="asus">Asus</option>
+              <option value="realme">Realme</option>
+              <option value="iphone">Iphone</option> -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Product Quantity</label>
+            <input type="text" class="form-control" name="quantity" [(ngModel)]="item.quantity"
+              id="exampleFormControlInput1" placeholder="Product Quantity">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Add Product Image</label>
+            <!-- <input type="file" class="form-control-file" name="filet" id="exampleFormControlFile1"> -->
+            <div>
+              <input type="file" name="images" [(ngModel)]="item.images" multiple (change)="selectImage($event)"
+                id="exampleFormControlFile1" />
+            </div>
+            <br>
+            <!-- <div>
+            <button type="submit" (click)="onMultipleSubmit()">Multiple Upload</button>
+          </div> -->
+          </div>
+          <!-- <input type="hidden" class="form-control" name="category" [(ngModel)]="item.category" id="exampleFormControlInput178676"
+        value="foods"> -->
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+      <div class="container">
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+        <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length">
+          Upload
+        </button>
+      </div>
+      <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+      <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()">
+        Upload
+      </button>
+    </div>
+    <div class="tab-pane fade" id="homemade" role="tabpanel" aria-labelledby="homemade-tab">
+      <div class="container">
+
+        <form #addItemsForm="ngForm" (ngSubmit)="addItems(addItemsForm.value)">
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="item.name" id="exampleFormControlInput1"
+              placeholder="Product name">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Product Price</label>
+            <input class="form-control" name="price" [(ngModel)]="item.price" id="exampleFormControlInput1"
+              placeholder="Product Price">
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Color</label>
+            <input type="text" class="form-control" name="color" [(ngModel)]="item.color" id="exampleFormControlInput1"
+              placeholder="Product Color">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Product Category</label>
+            <select class="form-control" [(ngModel)]="item.category" name="category" id="exampleFormControlSelect1">
+              <option value="foods">Foods</option>
+              <option value="electronics">Electronics</option>
+              <option value="homemade">Home Made</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Product Sub Category</label>
+            <select [(ngModel)]="item.subCategory" name="subCategory" class="form-control"
+              id="exampleFormControlSelect2">
+              <option *ngFor="let data of homemade" value="{{data.value}}">{{data.label}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Product Quantity</label>
+            <input type="text" class="form-control" name="year" [(ngModel)]="item.year" id="exampleFormControlInput1"
+              placeholder="Product Quantity">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Add Product Image</label>
+            <!-- <input type="file" class="form-control-file" name="filet" id="exampleFormControlFile1"> -->
+            <div>
+              <input type="file" name="images" [(ngModel)]="item.images" multiple (change)="selectImage($event)"
+                id="exampleFormControlFile1" />
+            </div>
+            <br>
+            <!-- <div>
+        <button type="submit" (click)="onMultipleSubmit()">Multiple Upload</button>
+      </div> -->
+          </div>
+          <!-- <input type="hidden" class="form-control" name="category" [(ngModel)]="item.category" id="exampleFormControlInput178676"
+    value="homemade"> -->
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+
+      <h1 style="text-align: center">Fun Of Heuristic File Uploader</h1>
+
+      <div style="text-align: center">
+        <form>
+          <div>
+            <input type="file" name="image" (change)="selectImage($event)" />
+          </div>
+          <br>
+          <div>
+            <button type="submit" (click)="onSubmit()">Upload</button>
+          </div>
+        </form>
+      </div>
+
+      <hr>
+      <h2 style="text-align: center">Multiple</h2>
+      <div style="text-align: center">
+        <form>
+          <div>
+            <input type="file" name="images" multiple (change)="selectMultipleImage($event)" />
+          </div>
+          <br>
+          <div>
+            <button type="submit" (click)="onMultipleSubmit()">Multiple Upload</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <button (click)="sendMail('rishu')">Send MAil</button>

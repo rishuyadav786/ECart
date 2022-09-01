@@ -1,0 +1,124 @@
+export class Help {
+    _id:String
+    name:string
+    email:string
+    password:String
+    userType:string
+    mobile:string
+    gender:string
+    address:string
+    address2:string
+    city:string
+    state:string
+    zip:string
+    otp:Number
+    isUserVerified:boolean
+    randomNumber:Number
+    images:string
+}
+
+export class Items1{
+    vin:String
+    brand:String
+    color:String
+    year:Number
+    buyerEmail:string
+    sellerEmail:string
+}
+export class Items{
+    _id:string
+    name:string
+    shortDesc:string
+    brand:string
+    color:string
+    displayType:string
+    quanitity:string
+    ram:string;
+    price:string
+    rom:string
+    battery:string
+    category:string
+    subCategory:string
+    screenLength:String
+    camera:string
+    wifi:string
+    bluetooth:string
+    warranty:string
+    sensors:string
+    year:Number
+    buyerEmail:string
+    sellerEmail:string
+    images:string
+    processor:string
+    quantity:string
+    size:string
+}
+export class myItems{
+    vin:String
+    brand:String
+    color:String
+    year:Number
+    userEmail:string
+    sellerEmail:string
+}
+export class myCart{
+   _id:string
+   buyerEmail:string
+   sellerEmail:string
+   productId:string
+}
+export class UserType{
+    label:string
+    value:string
+}
+export class Orders{
+    _id:string
+    buyerEmail:string
+    sellerEmail:string
+    productId:string
+    quantity:string
+    orderStatus:string
+    paymentType:string
+    paymentStatus:String
+    productOrderDate:Date
+    deliveredDate:Date;
+}
+export class orderDetails{
+    _id:String
+    name:string
+    buyerEmail:string
+    sellerEmail:string
+    mobile:string
+    address:string
+    productId:string
+    orderId:string
+    quantity:string
+    productName:string
+    shortDesc:string
+    brand:string
+    color:string
+    ram:string;
+    price:string
+    rom:string
+    category:string
+    subCategory:string
+    screenLength:String
+    size:String
+    camera:string
+    orderStatus:string
+    totalPrice:string
+    images:string
+    productOrderDate:Date;
+    deliveredDate:Date;
+}
+export class Reviews{
+    _id:string
+    buyerEmail:string
+    sellerEmail:string
+    productId:string
+    comments:string
+    ratings:Number
+    name:String
+    images:string
+}
+

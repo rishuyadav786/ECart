@@ -1,0 +1,436 @@
+<script>
+  $(document).ready(function() {
+$('.mdb-select').materialSelect();
+});
+</script>
+
+<div class="sidenav">
+  <!-- {{3.550053 | currency:'USD' :true:'2-2}} -->
+  <!-- {{3.550053 | currency:'USD':true:'1.2-2'}}  -->
+  <!-- 1----->
+
+
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Filter By Price
+          </button>
+        </h2>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div *ngFor="let data of priceFilter" class="form-check" style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox" name="{{data.value}}"  (change)="filterMera($event,'price')"  value="{{data.hValue}}">
+            <label class="form-check-label" for="defaultCheck5">
+              {{data.label}}
+            </label>
+          </div>
+         </div>
+      </div>
+    </div>
+   
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Filter By Brand
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <div *ngFor="let data of brandFilter" class="form-check" style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox" name="{{data.value}}"  (change)="filterMera($event.target.value,'brand')"  [value]="data.Value">
+            <label class="form-check-label" for="defaultCheck5">
+              {{data.label}}
+            </label>
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingFour">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Filter By Ram
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+        <div class="card-body">
+          <div *ngFor="let data of ramFilter" class="form-check" style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox"  name="ram" (change)="filterMera($event.target.value,'ram')"  value="{{data.Value}}" id="defaultCheck112">
+            <label class="form-check-label" for="defaultCheck112">
+              {{data.label}}
+            </label>
+          </div>
+         </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Filter By Category
+          </button>
+        </h2>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          <div *ngFor="let data of ramFilter" class="form-check" style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox"  name="ram" (change)="filterMera($event.target.value,'ram')"  value="{{data.Value}}" id="defaultCheck112">
+            <label class="form-check-label" for="defaultCheck112">
+              {{data.label}}
+            </label>
+          </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <h6 style="margin-left:10px;">Filter By Price</h6>
+  <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    +
+  </button>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div *ngFor="let data of priceFilter" class="form-check" style="margin-left:10px;">
+        <input class="form-check-input" type="checkbox" name="{{data.value}}"  (change)="filterMera($event.target.value,'price')"  ng-change='someFunction(myCheckbox)'" value="{{data.hValue}}">
+        <label class="form-check-label" for="defaultCheck5">
+          {{data.label}}
+        </label>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="filterArea">
+  <div *ngFor="let data of priceFilter" class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" name="{{data.value}}"  (change)="filterMera($event.target.value,'price')"  value="{{data.hValue}}">
+    <label class="form-check-label" for="defaultCheck5">
+      {{data.label}}
+    </label>
+  </div>
+</div> -->
+  <hr />
+  
+  <h6 style="margin-left:10px;">Filter By Barnd</h6>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+    +
+  </button>
+  <div class="collapse" id="collapseExample2">
+    <div class="card card-body">
+      <div *ngFor="let data of brandFilter" class="form-check" style="margin-left:10px;">
+        <input class="form-check-input" type="checkbox" name="{{data.value}}"  (change)="filterMera($event.target.value,'brand')"  [value]="data.Value">
+        <label class="form-check-label" for="defaultCheck5">
+          {{data.label}}
+        </label>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="filterArea">
+  <div *ngFor="let data of brandFilter" class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" name="{{data.value}}"  (change)="filterMera($event.target.value,'brand')"  [value]="data.Value">
+    <label class="form-check-label" for="defaultCheck5">
+      {{data.label}}
+    </label>
+  </div>
+</div> -->
+<!-- <pre>{{brandFilter}}</pre> -->
+
+  <hr />
+  
+  <h6 style="margin-left:10px;">Filter By Ram</h6>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+    +
+  </button>
+  <div class="collapse" id="collapseExample3">
+    <div class="card card-body">
+      <div *ngFor="let data of ramFilter" class="form-check" style="margin-left:10px;">
+        <input class="form-check-input" type="checkbox"  name="ram" (change)="filterMera($event.target.value,'ram')"  value="{{data.Value}}" id="defaultCheck112">
+        <label class="form-check-label" for="defaultCheck112">
+          {{data.label}}
+        </label>
+      </div>
+     </div>
+  </div>
+  <!-- <div class="filterArea">
+  <div *ngFor="let data of ramFilter" class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox"  name="ram" (change)="filterMera($event.target.value,'ram')"  value="{{data.Value}}" id="defaultCheck112">
+    <label class="form-check-label" for="defaultCheck112">
+      {{data.label}}
+    </label>
+  </div>
+  </div> -->
+  <hr />
+ 
+  <h6 style="margin-left:10px;">Filter By Category</h6>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+    +
+  </button>
+  <div class="collapse" id="collapseExample4">
+    <div class="card card-body">
+      <div *ngFor="let data of ramFilter" class="form-check" style="margin-left:10px;">
+        <input class="form-check-input" type="checkbox"  name="ram" (change)="filterMera($event.target.value,'ram')"  value="{{data.Value}}" id="defaultCheck112">
+        <label class="form-check-label" for="defaultCheck112">
+          {{data.label}}
+        </label>
+      </div>
+     </div>
+  </div>
+  <!-- <div class="filterArea">
+  <div *ngFor="let data of ramFilter" class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox"  name="ram" (change)="filterMera($event.target.value,'ram')"  value="{{data.Value}}" id="defaultCheck112">
+    <label class="form-check-label" for="defaultCheck112">
+      {{data.label}}
+    </label>
+  </div>
+  </div> -->
+  <hr />
+  <h6 style="margin-left:10px;">Filter By User Ratings</h6>
+  <div class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+    <label class="form-check-label" for="defaultCheck2">
+      Default checkbox
+    </label>
+  </div>
+  <div class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+    <label class="form-check-label" for="defaultCheck3">
+      Default checkbox
+    </label>
+  </div>
+  <div class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+    <label class="form-check-label" for="defaultCheck4">
+      Default checkbox
+    </label>
+  </div>
+  <hr />
+  <h2>Filter by Choice</h2>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5">
+    Button with data-target
+  </button>
+  <div class="collapse" id="collapseExample5">
+    <div class="card card-body">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+     </div>
+  </div>
+  
+</div>
+<div class="main">
+
+  <div style="margin-top:61px;">
+    <!-- <div *ngIf="items2.length<=0">No Result Found....</div> -->
+    <!-- <div>Showing 1 – 10 of {{items2.length}} results for "{{SearchText}} "</div> -->
+    <div>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link " href="#">Sort By</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" (click)="sortBy('relevance')">Relevance</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="sortBy('popularity')">Popularity</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="sortBy('priceLowToHigh')"> Price -- Low to High</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="sortBy('priceHighToLow')"> Price -- High to Low</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="sortBy('newest')"> Newest First</a>
+        </li>
+
+      </ul>
+    </div>
+    <hr />
+
+    <div *ngFor="let data of electronicsItems | paginate: { itemsPerPage: 5, currentPage: pages }" class="list-group"
+      style="margin-bottom: 10px;">
+      <a class="list-group-item list-group-item-action">
+
+        <!-- <div class="container" *ngIf="data.category=='foods'">
+          <div class="row">
+            <div class="col-sm-3" style="padding-left: 50px;padding-right: 50px;">
+              <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 100px;width:60px!important">
+            </div>
+            <div class="col-sm-9">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><a class="productName" [routerLink]="['/details', data._id]" >{{data.name}}
+                ({{data.color}})</a></h5>
+                <small>
+                  <h6>{{data.price}}</h6>
+                </small>
+                <a (click)="addToCart(data)"
+              class="rishuLink" title="add to cart"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg></a>
+               
+              </div>
+              <p class="mb-1">{{data.brand}} </p>
+        
+
+              <small>{{data.warranty}} manufacturer warranty for device and 6 months manufacturer warranty for in-box
+                accessories</small>
+            </div>
+          </div>
+        </div> -->
+        <div class="container" *ngIf="data.category=='electronics'">
+          <h6>Search results for {{SearchText}} </h6>
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 190px;width:45%!important;margin-left: 20%;">
+            </div>
+            <div class="col-sm-9">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><a class="productName" [routerLink]="['/details', data._id]" >{{data.name}}
+                    ({{data.color}})</a></h5>
+                <small>
+                  <h6 style="color:green">{{data.price  | currency:'INR':'symbol-narrow':'4.2-2'}}</h6>
+                </small>
+                <a (click)="addToCart(data)"
+              class="rishuLink" title="add to cart"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg></a>
+               
+              </div>
+              <p class="mb-1">{{data.ram}} gb | {{data.rom}} gb Memory</p>
+              <p class="mb-1">{{data.screenLength}} {{data.displayType}} Display</p>
+              <p class="mb-1">{{data.camera}} camera</p>
+              <p class="mb-1">{{data.battery}} Battery</p>
+              <p class="mb-1">{{data.processor}} Processors</p>
+
+              <small>{{data.warranty}} manufacturer warranty for device and 6 months manufacturer warranty for in-box
+                accessories</small>
+            </div>
+          </div>
+        </div>
+        
+
+</a>
+    </div>
+
+    
+  <div class="container">
+    <h6>Search results for {{SearchText}} </h6>
+    <hr/>
+    <div class="row" >
+      <div class="card-container1">
+        <div *ngFor="let data of fashionItems | paginate: { itemsPerPage: 12, currentPage: pages }"
+          style="height:250px!important;flex-direction: column;" (click)="openProductDetails(data)" class="card1 card-small1"
+          (click)="selection.value = 'component'" tabindex="0">
+          <a class="productName1" [routerLink]="['/details', data._id]" >
+          <img src="assets/{{data.images}}" alt="..." style="width:70px;height:130px">
+          <div>
+            <h6>{{data.name}}</h6>
+          </div>
+         
+            <p style="color:green" class="prodDetails">₹{{data.price}}</p>
+         
+         
+            <p style="color:#333;" class="prodDetails"> {{data.color}}</p>
+         
+          </a>
+        </div>
+        
+      </div>
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
+  </div>
+
+
+    <!-- <pagination-controls (pageChange)="pages = $event"></pagination-controls> -->
+        <!-- <div class="container" *ngIf="data.category=='fashion'">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 190px;width:45%!important;margin-left: 20%;">
+            </div>
+            <div class="col-sm-9">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><a class="productName" [routerLink]="['/details', data._id]" >{{data.name}}
+                    ({{data.color}})</a></h5>
+                <small>
+                  <h6>{{data.price}}</h6>
+                </small>
+                <a (click)="addToCart(data)"
+              class="rishuLink" title="add to cart"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg></a>
+               
+              </div>
+              <p class="mb-1">Size : {{data.size}}</p>
+             
+
+              <small>{{data.warranty}} manufacturer warranty for device and 6 months manufacturer warranty for in-box
+                accessories</small>
+            </div>
+          </div>
+        </div> -->
+     
+        <div class="container" >
+          <h6>Search results for Foods </h6>
+          <hr/>
+          <div class="row" >
+            <div class="card-container1">
+              <div *ngFor="let data of foodsItems | paginate: { itemsPerPage: 12, currentPage: pages }"
+                style="height:250px!important;flex-direction: column;" (click)="openProductDetails(data)" class="card1 card-small1"
+                (click)="selection.value = 'component'" tabindex="0" >
+                <a class="productName" [routerLink]="['/details', data._id]" >
+                  
+                <img src="assets/{{data.images}}" alt="..." style="width:60px;height:100px">
+                <div>
+                  <h6>{{data.name}}</h6>
+                </div>
+                <div>
+                  <p style="color:green">Color: {{data.camera}}</p>
+                </div>
+                <div>
+                  <p style="color:green">Price: {{data.price}}</p>
+                </div>
+                <div>
+                  <p style="color:#333;">Size : {{data.size}} inch</p>
+                </div>
+              </a>
+              </div>
+              
+            </div>
+           
+          </div>
+        </div>
+        <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+  </div>
+</div>

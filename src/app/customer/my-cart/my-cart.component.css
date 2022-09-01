@@ -1,0 +1,11 @@
+.rishuLink2{
+    text-decoration: none;
+}
+.cartImages{
+    height: 75px; width:70%!important;min-width: 35px!important;
+}
+@media (max-width: 500px) {
+    .cartImages{
+        height: 200px; width:70%!important;min-width: 35px!important;
+    }
+  }

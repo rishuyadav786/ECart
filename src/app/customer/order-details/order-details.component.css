@@ -1,0 +1,36 @@
+.smallFont{
+    font-size: 10px;
+
+}
+.progress-bar{
+    height: 6px;
+}
+.progress{
+    height: 6px;
+}
+.checked{
+    color:orange;
+}
+.rishuLink2{
+    text-decoration: none;
+}
+.orderStatus{
+    height: 16px;
+    width: 16px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+.accepted{
+    background-color: white;
+    border:2px solid green
+}
+.pending{
+    background-color: orange;
+}
+.canceled{
+    background-color: red;
+}
+.delevired{
+    background-color: green;
+}

@@ -1,0 +1,265 @@
+<div style="margin-top:61px;">
+    <div class="container">
+        <div class="list-group" style="margin-bottom: 10px;">
+            <a class="list-group-item list-group-item-action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>Delivery Address</h6>
+                            <p>{{user.name}}</p>
+                            <small>{{user.address}}, {{user.address2}}
+                                {{user.city}}-{{user.zip}},
+                                {{user.state}}
+                            </small>
+                            <br />
+                            <p class="mb-1">Phone number</p>
+                            <small>
+                                {{user.mobile}}, 7890993832
+                            </small>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Delivery Address</h6>
+                            <p>Rishu Yadav</p>
+                            <small>4 no. railway gate, Near lalkothi Chowdhary para, belgharia kolkata-700056, LALKOTHI
+                                Kolkata
+                                - 700056, West Bengal
+                            </small>
+                            <br />
+                            <p>Phone number</p>
+                            <small>
+                                9804050418, 7890993832
+                            </small>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Delivery Address</h6>
+                            <p>Rishu Yadav</p>
+                            <small>4 no. railway gate, Near lalkothi Chowdhary para, belgharia kolkata-700056, LALKOTHI
+                                Kolkata
+                                - 700056, West Bengal
+                            </small>
+                            <br />
+                            <p>Phone number</p>
+                            <small>
+                                9804050418, 7890993832
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+
+
+
+        <div class="list-group" style="margin-bottom: 10px;">
+            <a class="list-group-item list-group-item-action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img src="assets/{{item2.images}}" class="d-block w-100" alt="..." style="height: 90px;">
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1" *ngIf="item2.name"><a [routerLink]="['/details', item2._id]"
+                                        class="rishuLink2">{{item2.name}} ({{item2.color}}) </a></h6>
+
+                            </div>
+                            <small *ngIf="item2.ram">{{item2.ram}} | {{item2.rom}} Memory </small><br/>
+                            <small *ngIf="item2.price">₹{{item2.price}}</small><br />
+                            <!-- <p class="mb-1">₹{{item2.price}}</p> -->
+                            <small *ngIf="item2.price">Quantity = {{order1.quantity}}</small>
+                            <!-- <p class="mb-1">{{item2.quantity}}</p> -->
+                            <p class="mb-1" *ngIf="totalP">Total = ₹{{totalP}}</p>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <div class="col-md-3" style="text-align: left;"><small class="smallFont">Ordered</small>
+                                </div>
+                                <div class="col-md-3" style="text-align: left;"><small class="smallFont">Packed</small>
+                                </div>
+                                <div class="col-md-3" style="text-align: right;"><small
+                                        class="smallFont">Shipped</small></div>
+                                <div class="col-md-3" style="text-align: right;"><small
+                                        class="smallFont">Delivered</small></div>
+                            </div>
+
+                            <div class="row progress">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                    [ngStyle]="{'width': proWidth + '%'}" aria-valuenow="25" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3" style="text-align: left;"><small
+                                        class="smallFont">{{order1.productOrderDate | date:'dd-MMMM-yyyy hh:mm:ss a':'+0530'}}</small></div>
+                                <div class="col-md-3" style="text-align: left;"><small class="smallFont">Wed, 12th
+                                        Aug</small></div>
+                                <div class="col-md-3" style="text-align: right;"><small class="smallFont">Sat, 15th
+                                        Aug</small></div>
+                                <div class="col-md-3" style="text-align: right;"><small class="smallFont">
+                                        {{order1.deliveredDate}}</small></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- <p data-toggle="modal" data-target="#placeOrderModel1">RATE & REVIEW PRODUCT</p> -->
+
+                            <span *ngIf="order1.orderStatus=='Accepted'"><a href="#" data-toggle="modal" data-target="#placeOrderModel1"> RATE & REVIEW
+                                    PRODUCT</a></span>
+
+
+                            <div>
+                                <span *ngIf="order1.orderStatus=='Accepted'" class="orderStatus accepted"></span>
+                                <span *ngIf="order1.orderStatus=='Pending'" class="orderStatus pending"></span>
+                                <span *ngIf="order1.orderStatus=='Rejected'" class="orderStatus canceled"></span>
+                                <span *ngIf="order1.orderStatus=='Delevired'" class="orderStatus delevired"></span>
+
+                                {{order1.orderStatus}}</div>
+                            <small *ngIf="order1.orderStatus=='Pending'">Your order is pending</small>
+                            <small *ngIf="order1.orderStatus=='Accepted'" style="color:green">Your order has been been Accepted</small>
+                            <small *ngIf="order1.orderStatus=='Rejected'">Your order has been been Canceled</small>
+                            <small *ngIf="order1.orderStatus=='Delevired'">Your order has been been deliverd</small>
+                            <div style=""><a class="rishuLink" (click)="cancelOrder(order1._id)">Cancel Order</a>
+                            </div>
+                            <p>My Comments : <b>{{review.comments}}</b></p>
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+    </div>
+
+
+    <!-- --------------------start----------------- -->
+
+
+
+
+    <div class="modal fade" id="placeOrderModel1" tabindex="-1" role="dialog" aria-labelledby="placeOrderModel1"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add comments</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form #addReviewsForm="ngForm" (ngSubmit)="addReviews()">
+                        <div class="form-group row">
+                          
+                             <label for="inputEmail3"
+                               class="col-sm-2 col-form-label">Rating</label>
+                           <div class="col-sm-10">
+                            <app-rating [rating]='review.ratings' [itemId]='review._id'  (ratingClick)='ratingComponentClick($event)'></app-rating>
+              
+                          <!-- <select [(ngModel)]="review.ratings1" name="ratings" class="form-control">
+                                <option value="1"><span class="fa fa-star checked">1</span> </option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>  -->
+                           </div>
+                           
+                            <!-- <label for="inputEmail3"
+                               class="col-sm-2 col-form-label">Rating</label>
+                           <div class="col-sm-10">
+                               <input type="text" class="form-control"
+                                   [(ngModel)]="review.ratings" name="ratings"
+                                   placeholder="ratings" >
+                           </div> -->
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Comments</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" [(ngModel)]="review.comments" name="comments"
+                                    placeholder="comments">
+                            </div>
+                        </div>
+                        <!-- <app-rating></app-rating> -->
+                           
+                  <!-- <app-rating [rating]='review.ratings' [itemId]='review.id'  (ratingClick)='ratingComponentClick($event)'></app-rating> -->
+              
+                        <!-- <div style="text-align:center">
+                          
+                            <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                          </div> -->
+                          
+                        <!-- <star-rating-comp [starType]="'icon'"></star-rating-comp> -->
+                        <!-- <star-rating-comp [starType]="'svg'" [rating]="2.63"></star-rating-comp> -->
+
+
+
+                            <!-- <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>  -->
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Add
+                                    comments</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- --------------extra---------- -->
+<!--                     
+<div>
+    <div class='container'>
+      <h2>Rating Component</h2>
+      <div class="panel panel-primary">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Rating</th>
+                <th>Rating No.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items333">
+                <td>
+                  {{item.company}}
+                </td>
+                <td>
+                  {{item.contact}}
+                </td>
+                <td>
+                    
+                  <app-rating [rating]='item.rating' [itemId]='item.id' (ratingClick)='ratingComponentClick($event)'></app-rating>
+                </td>
+                <td>
+                  {{item.rating}} Stars
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p *ngIf='ratingClicked'>The Company {{itemIdRatingClicked}} has been given {{ratingClicked}} stars</p>
+    </div>
+  </div> -->
+<!-- ------------------------extra----------------- -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- -----------------------end--------------------------- -->
